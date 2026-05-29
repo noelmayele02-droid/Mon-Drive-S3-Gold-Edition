@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Micro-service API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ezy-drive-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    # SECURITÉ CRUCIALE : Docker pioche dans ton fichier local non-suivi par Git
+    env_file:
+      - ./backend/.env
+    networks:
+      - ezy-network
+
+  # Micro-service Front (Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ezy-drive-frontend
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - VITE_API_URL=http://localhost:3000/api/files
+    depends_on:
+      - backend
+    networks:
+      - ezy-network
+
+networks:
+  ezy-network:
+    driver: bridge

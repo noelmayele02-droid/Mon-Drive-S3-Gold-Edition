@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    
+    /* 🎯 RECOMMANDATIONS PROF : Rigueur du Code */
+    "strict": true,                           // Active toutes les vérifications strictes de types
+    "strictNullChecks": true,                 // Empêche d'utiliser une variable potentiellement 'null' ou 'undefined'
+    "noImplicitAny": true,                    // Interdit le type 'any' implicite (force à typer ton code)
+    "forceConsistentCasingInFileNames": true, // Évite les bugs de casse entre Windows, Mac et Linux (important pour Docker !)
+    "noFallthroughCasesInSwitch": true        // Sécurise les blocs switch/case en détectant les oublis de 'break'
+  }
+}

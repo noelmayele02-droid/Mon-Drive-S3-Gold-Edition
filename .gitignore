@@ -1,0 +1,14 @@
+# Dépendances locales
+node_modules/
+dist/
+dist-ssr
+*.local
+
+# CRITIQUE : Protection anti-fuite de clés AWS sur GitHub
+.env
+.env.*
+!.env.example
+
+# Logs et fichiers systèmes
+npm-debug.log*
+.DS_Store

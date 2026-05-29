@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   Design System Variables & Foundation
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Backgrounds - Dark Theme */
+  --bg: #0F172A;
+  --bg2: #1a2847;
+  --bg3: #232e4a;
+  --bg4: #2a3a54;
+  
+  /* Text Colors */
+  --ink: #e2e8f0;
+  --ink2: #cbd5e1;
+  --ink3: #94a3b8;
+  
+  /* Accents */
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.1);
+  --accent-mid: #60a5fa;
+  
+  /* Semantic Colors */
+  --green: #10b981;
+  --green-soft: rgba(16, 185, 129, 0.1);
+  --amber: #f59e0b;
+  --amber-soft: rgba(245, 158, 11, 0.1);
+  --purple: #a855f7;
+  --purple-soft: rgba(168, 85, 247, 0.1);
+  --rose: #f43f5e;
+  --rose-soft: rgba(244, 63, 94, 0.1);
+  
+  /* Borders */
+  --border: rgba(226, 232, 240, 0.08);
+  --border2: rgba(226, 232, 240, 0.14);
+  
+  /* Spacing & Radius */
+  --r: 12px;
+  --r-lg: 20px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Animations
+   ═══════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.15;
+    }
+    25% {
+      transform: translate(20px, -50px) scale(1.1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.9);
+      opacity: 0.12;
+    }
+    75% {
+      transform: translate(50px, 50px) scale(1.05);
+      opacity: 0.18;
+    }
+  }
+
+  @keyframes slideUpIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDownIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes rotate-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 8s ease-in-out infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .animate-slide-up {
+    animation: slideUpIn 0.6s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDownIn 0.6s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 8s linear infinite;
+  }
+
+  /* Smooth scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-900/20;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700/50 rounded-full hover:bg-slate-600/70;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-slate-900/40 backdrop-blur-lg border border-slate-700/30;
+  }
+
+  .glass-hover {
+    @apply hover:bg-slate-800/50 hover:border-slate-600/40 transition-all duration-300;
+  }
+
+  /* Text gradients */
+  .gradient-text {
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button, input, textarea, select, a {
+    @apply transition-all duration-200;
+  }
+
+  /* Focus states for accessibility */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply outline-none ring-2 ring-blue-500/50;
+  }
+
+  /* Hover state utilities */
+  .hover-lift {
+    @apply hover:transform hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-glow {
+    @apply hover:shadow-lg hover:shadow-blue-500/30;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Base Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans;
+    font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Serif', 'Sora', serif;
+  }
+
+  input, textarea, select {
+    @apply transition-all duration-200;
+  }
+
+  button {
+    @apply transition-all duration-200 cursor-pointer font-medium;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-blue-500/30 text-inherit;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Component Utilities
+   ═══════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-slate-900/50 backdrop-blur-xl border border-slate-700/30 rounded-2xl;
+  }
+
+  .card-hover {
+    @apply hover:bg-slate-900/60 hover:border-slate-600/40 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300;
+  }
+
+  /* Buttons */
+  .btn-base {
+    @apply px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-slate-800/50 text-slate-200 hover:bg-slate-700/50 border border-slate-700/50;
+  }
+
+  .btn-success {
+    @apply btn-base bg-gradient-to-r from-emerald-600/40 to-teal-600/40 text-emerald-300 border border-emerald-500/30 hover:from-emerald-600/60 hover:to-teal-600/60 hover:border-emerald-500/60;
+  }
+
+  .btn-danger {
+    @apply btn-base bg-gradient-to-r from-rose-600/40 to-red-600/40 text-rose-300 border border-rose-500/30 hover:from-rose-600/60 hover:to-red-600/60 hover:border-rose-500/60;
+  }
+
+  /* Input fields */
+  .input-base {
+    @apply w-full px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm text-slate-200 placeholder-slate-500;
+  }
+
+  .input-focus {
+    @apply focus:outline-none focus:border-blue-500/50 focus:shadow-lg focus:shadow-blue-500/20 focus:bg-slate-800/70;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply badge bg-blue-500/20 text-blue-300 border border-blue-500/30;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-500/20 text-amber-300 border border-amber-500/30;
+  }
+
+  .badge-danger {
+    @apply badge bg-rose-500/20 text-rose-300 border border-rose-500/30;
+  }
+
+  /* Status indicators */
+  .status-pulse {
+    @apply w-2.5 h-2.5 rounded-full animate-pulse shadow-lg;
+  }
+
+  .status-online {
+    @apply status-pulse bg-emerald-500 shadow-emerald-500/50;
+  }
+
+  .status-away {
+    @apply status-pulse bg-amber-500 shadow-amber-500/50;
+  }
+
+  .status-offline {
+    @apply status-pulse bg-slate-500 shadow-slate-500/50;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive Design
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  :root {
+    --r: 10px;
+    --r-lg: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --r: 8px;
+    --r-lg: 12px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+}
+
