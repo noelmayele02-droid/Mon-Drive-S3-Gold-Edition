@@ -80,5 +80,3 @@ L'interface de développement sera accessible sur `http://localhost:5173`.
 * **Suppression (Delete) :** Nettoyage définitif et instantané des objets ciblés sur l'infrastructure cloud S3.
 * **Gestion Globale des Erreurs (Exception Filters) :** Capture complète des exceptions du SDK AWS (Ex: clés invalides, Bucket inexistant). L'API renvoie un code d'erreur HTTP standardisé (`400 Bad Request`, `401 Unauthorized`) intercepté par l'interface utilisateur pour un affichage propre via des notifications (Toasts).
 * **Contrôle Strict du CORS :** Configuration du serveur NestJS pour autoriser explicitement les en-têtes personnalisés indispensables (`x-aws-key`, `x-aws-secret`, etc.) initiés par le Front-end local.
-
-```
